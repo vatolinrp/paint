@@ -10,11 +10,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import paintshapetools.DragElement;
-import painttools.StrokeStyle;
+
+import painttools.StrokeStyleEnum;
 
 public class RectangleElement extends DragElement {
-    public RectangleElement(Color clr, Point pt1, Point pt2, int dim, StrokeStyle style) {
+    public RectangleElement(Color clr, Point pt1, Point pt2, int dim, StrokeStyleEnum style) {
         super(clr, pt1, pt2, dim, style);
     }
 
@@ -22,7 +22,7 @@ public class RectangleElement extends DragElement {
         Graphics2D g2d = (Graphics2D)g;
         g2d.setPaint(this.color);
         g2d.setStroke(new BasicStroke((float)this.strokeWidth, 1, 0));
-        if(this.strokeStyle == StrokeStyle.OPEN_RECT) {
+        if(this.strokeStyle == StrokeStyleEnum.OPEN_RECT) {
             if(this.fPoint.x - this.sPoint.x < 0 && this.fPoint.y - this.sPoint.y < 0) {
                 g2d.drawRect(this.fPoint.x, this.fPoint.y, Math.abs(this.fPoint.x - this.sPoint.x), Math.abs(this.fPoint.y - this.sPoint.y));
             }
@@ -40,7 +40,7 @@ public class RectangleElement extends DragElement {
             }
         }
 
-        if(this.strokeStyle == StrokeStyle.FILL_RECT) {
+        if(this.strokeStyle == StrokeStyleEnum.FILL_RECT) {
             if(this.fPoint.x - this.sPoint.x < 0 && this.fPoint.y - this.sPoint.y < 0) {
                 g2d.fillRect(this.fPoint.x, this.fPoint.y, Math.abs(this.fPoint.x - this.sPoint.x), Math.abs(this.fPoint.y - this.sPoint.y));
             }

@@ -14,9 +14,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import paintapplication.Main;
-import paintcontrols.PencilToolPanel;
-import painttools.StrokeStyle;
-import painttools.Tool;
+import painttools.StrokeStyleEnum;
+import painttools.ToolEnum;
 import paintvisuals.ToolOptionIcon;
 
 public class BrushToolPanel extends PencilToolPanel {
@@ -25,14 +24,14 @@ public class BrushToolPanel extends PencilToolPanel {
     protected BrushToolPanel.ButtonHandler handler;
     protected JPanel buttonHolder;
 
-    public BrushToolPanel(Tool tool, int stroke) {
+    public BrushToolPanel(ToolEnum tool, int stroke) {
         super(tool, stroke);
         this.setLayout(new FlowLayout());
         this.strokeStyles = new JButton[3];
         this.styleIcons = new ToolOptionIcon[3];
-        this.styleIcons[0] = new ToolOptionIcon(StrokeStyle.DOT_CIRC);
-        this.styleIcons[1] = new ToolOptionIcon(StrokeStyle.DOT_RECT);
-        this.styleIcons[2] = new ToolOptionIcon(StrokeStyle.LINE);
+        this.styleIcons[0] = new ToolOptionIcon(StrokeStyleEnum.DOT_CIRC);
+        this.styleIcons[1] = new ToolOptionIcon(StrokeStyleEnum.DOT_RECT);
+        this.styleIcons[2] = new ToolOptionIcon(StrokeStyleEnum.LINE);
         this.handler = new BrushToolPanel.ButtonHandler();
         this.buttonHolder = new JPanel();
         this.buttonHolder.setBackground(Color.gray);

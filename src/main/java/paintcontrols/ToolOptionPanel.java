@@ -8,13 +8,13 @@ package paintcontrols;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JPanel;
-import painttools.Tool;
+import painttools.ToolEnum;
 
 public abstract class ToolOptionPanel extends JPanel {
-    Tool tool;
+    ToolEnum tool;
     Color color;
 
-    public ToolOptionPanel(Tool tool) {
+    public ToolOptionPanel(ToolEnum tool) {
         this.tool = tool;
         this.setPreferredSize(new Dimension(164, 256));
         this.setBackground(Color.darkGray);

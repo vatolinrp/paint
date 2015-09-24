@@ -9,15 +9,15 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.io.Serializable;
-import painttools.StrokeStyle;
+import painttools.StrokeStyleEnum;
 
 public abstract class PaintElement implements Serializable {
     protected Point coors;
     protected Color color;
-    protected StrokeStyle strokeStyle;
+    protected StrokeStyleEnum strokeStyle;
     protected int strokeWidth;
 
-    public PaintElement(Point pt, Color clr, int dim, StrokeStyle style) {
+    public PaintElement(Point pt, Color clr, int dim, StrokeStyleEnum style) {
         this.coors = pt;
         this.color = clr;
         this.strokeStyle = style;
@@ -28,10 +28,10 @@ public abstract class PaintElement implements Serializable {
         this.coors = pt;
         this.color = clr;
         this.strokeWidth = dim;
-        this.strokeStyle = StrokeStyle.FILL_RECT;
+        this.strokeStyle = StrokeStyleEnum.FILL_RECT;
     }
 
-    public PaintElement(Color clr, int dim, StrokeStyle style) {
+    public PaintElement(Color clr, int dim, StrokeStyleEnum style) {
         this.color = clr;
         this.strokeWidth = dim;
         this.strokeStyle = style;
@@ -64,11 +64,11 @@ public abstract class PaintElement implements Serializable {
         this.strokeWidth = str;
     }
 
-    public StrokeStyle getStrokeStyle() {
+    public StrokeStyleEnum getStrokeStyle() {
         return this.strokeStyle;
     }
 
-    public void setStrokeStyle(StrokeStyle style) {
+    public void setStrokeStyle(StrokeStyleEnum style) {
         this.strokeStyle = style;
     }
 

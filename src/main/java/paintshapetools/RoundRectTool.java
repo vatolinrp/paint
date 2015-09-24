@@ -6,12 +6,12 @@
 package paintshapetools;
 
 import java.awt.Color;
-import paintshapetools.RectangleTool;
-import painttools.StrokeStyle;
+
+import painttools.StrokeStyleEnum;
 
 public class RoundRectTool extends RectangleTool {
     public RoundRectTool(Color clr, int dim) {
         super(clr, dim);
-        this.strokeStyle = StrokeStyle.OPEN_ROUND_RECT;
+        this.strokeStyle = StrokeStyleEnum.OPEN_ROUND_RECT;
     }
 }

@@ -7,12 +7,11 @@ package paintdrawtools;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import paintdrawtools.BrushElement;
-import paintdrawtools.PencilTool;
-import painttools.StrokeStyle;
+
+import painttools.StrokeStyleEnum;
 
 public class BrushTool extends PencilTool {
-    public BrushTool(Color clr, int dim, StrokeStyle style) {
+    public BrushTool(Color clr, int dim, StrokeStyleEnum style) {
         super(clr, dim);
         this.strokeStyle = style;
         this.element = new BrushElement();

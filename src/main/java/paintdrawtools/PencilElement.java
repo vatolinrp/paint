@@ -10,13 +10,13 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import paintdrawtools.PaintElement;
-import painttools.StrokeStyle;
+
+import painttools.StrokeStyleEnum;
 
 public class PencilElement extends PaintElement {
     Point previousPt;
 
-    public PencilElement(Point pt, Color clr, int dim, StrokeStyle style) {
+    public PencilElement(Point pt, Color clr, int dim, StrokeStyleEnum style) {
         super(pt, clr, dim, style);
         this.setStrokeWidth(dim);
     }

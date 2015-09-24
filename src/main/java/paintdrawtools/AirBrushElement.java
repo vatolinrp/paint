@@ -9,14 +9,14 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.Random;
-import paintdrawtools.PencilElement;
-import painttools.StrokeStyle;
+
+import painttools.StrokeStyleEnum;
 
 public class AirBrushElement extends PencilElement {
     boolean newElement = true;
     int[][] points;
 
-    public AirBrushElement(Point pt, Color clr, int dim, StrokeStyle style) {
+    public AirBrushElement(Point pt, Color clr, int dim, StrokeStyleEnum style) {
         super(pt, clr, dim, style);
     }
 

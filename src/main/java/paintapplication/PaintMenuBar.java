@@ -1,86 +1,80 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package paintapplication;
+
+import painttools.ToolEnum;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.util.ArrayList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import paintapplication.Main;
-import painttools.FillerElement;
 
-public class PaintMenuBar extends JMenuBar {
+public class PaintMenuBar extends JMenuBar
+{
     JMenu file;
     JMenuItem quit;
     JMenuItem newSketch;
-    JMenuItem openSketch;
-    JMenuItem saveSketch;
-    JMenu view;
-    JMenu options;
-    JMenu help;
-    JMenuItem howToPaint;
+    JMenu elements;
+    JMenuItem drawRectangle;
+    JMenuItem drawEllipse;
+    JMenuItem drawLine;
 
-    PaintMenuBar() {
+    PaintMenuBar()
+    {
         PaintMenuBar.ItemHandler itemHandler = new PaintMenuBar.ItemHandler();
-        this.file = new JMenu("File");
-        this.help = new JMenu("Help");
-        this.view = new JMenu("View");
-        this.options = new JMenu("Options");
-        this.newSketch = new JMenuItem("New Sketch");
-        this.openSketch = new JMenuItem("Open Sketch");
-        this.saveSketch = new JMenuItem("Save Sketch");
-        this.quit = new JMenuItem("Quit");
-        this.newSketch.addActionListener(itemHandler);
-        this.openSketch.addActionListener(itemHandler);
-        this.saveSketch.addActionListener(itemHandler);
-        this.quit.addActionListener(itemHandler);
-        this.file.add(this.newSketch);
-        this.file.add(this.openSketch);
-        this.file.add(this.saveSketch);
-        this.file.addSeparator();
-        this.file.add(this.quit);
-        this.howToPaint = new JMenuItem("Help...");
-        this.howToPaint.addActionListener(itemHandler);
-        this.help.add(this.howToPaint);
-        this.add(this.file);
-        this.add(this.view);
-        this.add(this.options);
-        this.add(this.help);
+
+        file = new JMenu("File");
+        elements = new JMenu("Elements");
+
+        drawRectangle = new JMenuItem("Rectangle");
+        drawEllipse = new JMenuItem("Ellipse");
+        drawLine = new JMenuItem("Line");
+        newSketch = new JMenuItem("New Drawing");
+        quit = new JMenuItem("Quit");
+
+        newSketch.addActionListener(itemHandler);
+        quit.addActionListener(itemHandler);
+        drawRectangle.addActionListener(itemHandler);
+        drawEllipse.addActionListener(itemHandler);
+        drawLine.addActionListener(itemHandler);
+
+        file.add(this.newSketch);
+        file.add(this.quit);
+
+        elements.add(drawRectangle);
+        elements.add(drawEllipse);
+        elements.add(drawLine);
+
+        add(this.file);
+        add(this.elements);
     }
 
-    private class ItemHandler implements ActionListener {
-        private ItemHandler() {
+    private class ItemHandler implements ActionListener
+    {
+        private ItemHandler()
+        {
+
         }
 
-        public void actionPerformed(ActionEvent event) {
-            if(event.getSource() == PaintMenuBar.this.quit) {
+        public void actionPerformed(ActionEvent event)
+        {
+            if (event.getSource() == PaintMenuBar.this.quit)
+            {
                 Main.paint.dispose();
                 System.exit(0);
             }
-
-            if(event.getSource() == PaintMenuBar.this.newSketch) {
-                Main.paint.drawPanel.elements = new ArrayList();
-                Main.paint.drawPanel.elements.add(new FillerElement(Color.white));
+            if (event.getSource() == PaintMenuBar.this.drawRectangle)
+            {
+                Main.paint.drawPanel.setTool(ToolEnum.RECTANGLE);
             }
-
-            if(event.getSource() == PaintMenuBar.this.saveSketch) {
-                Main.paint.saveFile();
+            if (event.getSource() == PaintMenuBar.this.drawEllipse)
+            {
+                Main.paint.drawPanel.setTool(ToolEnum.OVAL);
             }
-
-            if(event.getSource() == PaintMenuBar.this.openSketch) {
-                File fileName = Main.paint.getFileName();
-                Main.paint.loadFile(fileName);
-                Main.paint.loadElementsFromFile();
-                Main.paint.closeFile();
+            if (event.getSource() == PaintMenuBar.this.drawLine)
+            {
+                Main.paint.drawPanel.setTool(ToolEnum.LINE);
             }
-
             Main.paint.repaint();
             PaintMenuBar.this.setFocusable(false);
         }

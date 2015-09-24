@@ -13,16 +13,15 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import paintapplication.Main;
-import paintcontrols.DragShapeToolPanel;
-import painttools.StrokeStyle;
-import painttools.Tool;
+import painttools.StrokeStyleEnum;
+import painttools.ToolEnum;
 import paintvisuals.ToolOptionIcon;
 
 public class RectShapeToolPanel extends DragShapeToolPanel {
     JButton fillButton;
     JButton unFillButton;
 
-    public RectShapeToolPanel(Tool tool, int stroke) {
+    public RectShapeToolPanel(ToolEnum tool, int stroke) {
         super(tool, stroke);
         this.remove(this.buttonHolder);
         JPanel fillButtonPanel = new JPanel();
@@ -34,19 +33,19 @@ public class RectShapeToolPanel extends DragShapeToolPanel {
         RectShapeToolPanel.ButtonListener listener = new RectShapeToolPanel.ButtonListener();
         this.fillButton.addActionListener(listener);
         this.unFillButton.addActionListener(listener);
-        if(tool == Tool.RECTANGLE) {
-            this.fillButton.add(new ToolOptionIcon(StrokeStyle.FILL_RECT));
-            this.unFillButton.add(new ToolOptionIcon(StrokeStyle.OPEN_RECT));
+        if(tool == ToolEnum.RECTANGLE) {
+            this.fillButton.add(new ToolOptionIcon(StrokeStyleEnum.FILL_RECT));
+            this.unFillButton.add(new ToolOptionIcon(StrokeStyleEnum.OPEN_RECT));
         }
 
-        if(tool == Tool.OVAL) {
-            this.fillButton.add(new ToolOptionIcon(StrokeStyle.FILL_OVAL));
-            this.unFillButton.add(new ToolOptionIcon(StrokeStyle.OPEN_OVAL));
+        if(tool == ToolEnum.OVAL) {
+            this.fillButton.add(new ToolOptionIcon(StrokeStyleEnum.FILL_OVAL));
+            this.unFillButton.add(new ToolOptionIcon(StrokeStyleEnum.OPEN_OVAL));
         }
 
-        if(tool == Tool.ROUND_RECT) {
-            this.fillButton.add(new ToolOptionIcon(StrokeStyle.FILL_ROUND_RECT));
-            this.unFillButton.add(new ToolOptionIcon(StrokeStyle.OPEN_ROUND_RECT));
+        if(tool == ToolEnum.ROUND_RECT) {
+            this.fillButton.add(new ToolOptionIcon(StrokeStyleEnum.FILL_ROUND_RECT));
+            this.unFillButton.add(new ToolOptionIcon(StrokeStyleEnum.OPEN_ROUND_RECT));
         }
 
         fillButtonPanel.add(this.fillButton);
@@ -63,28 +62,28 @@ public class RectShapeToolPanel extends DragShapeToolPanel {
 
         public void actionPerformed(ActionEvent event) {
             if(event.getSource() == RectShapeToolPanel.this.fillButton) {
-                switch(RectShapeToolPanel.this.tool.ordinal()) {
-                    case 1:
-                        Main.paint.drawPanel.tool.setStrokeStyle(StrokeStyle.FILL_RECT);
+                switch(RectShapeToolPanel.this.tool) {
+                    case RECTANGLE:
+                        Main.paint.drawPanel.tool.setStrokeStyle(StrokeStyleEnum.FILL_RECT);
                         break;
-                    case 2:
-                        Main.paint.drawPanel.tool.setStrokeStyle(StrokeStyle.FILL_ROUND_RECT);
+                    case ROUND_RECT:
+                        Main.paint.drawPanel.tool.setStrokeStyle(StrokeStyleEnum.FILL_ROUND_RECT);
                         break;
-                    case 3:
-                        Main.paint.drawPanel.tool.setStrokeStyle(StrokeStyle.FILL_OVAL);
+                    case OVAL:
+                        Main.paint.drawPanel.tool.setStrokeStyle(StrokeStyleEnum.FILL_OVAL);
                 }
             }
 
             if(event.getSource() == RectShapeToolPanel.this.unFillButton) {
-                switch(RectShapeToolPanel.this.tool.ordinal()) {
-                    case 1:
-                        Main.paint.drawPanel.tool.setStrokeStyle(StrokeStyle.OPEN_RECT);
+                switch(RectShapeToolPanel.this.tool) {
+                    case RECTANGLE:
+                        Main.paint.drawPanel.tool.setStrokeStyle(StrokeStyleEnum.OPEN_RECT);
                         break;
-                    case 2:
-                        Main.paint.drawPanel.tool.setStrokeStyle(StrokeStyle.OPEN_ROUND_RECT);
+                    case ROUND_RECT:
+                        Main.paint.drawPanel.tool.setStrokeStyle(StrokeStyleEnum.OPEN_ROUND_RECT);
                         break;
-                    case 3:
-                        Main.paint.drawPanel.tool.setStrokeStyle(StrokeStyle.OPEN_OVAL);
+                    case OVAL:
+                        Main.paint.drawPanel.tool.setStrokeStyle(StrokeStyleEnum.OPEN_OVAL);
                 }
             }
 

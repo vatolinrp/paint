@@ -9,13 +9,13 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import paintdrawtools.PaintElement;
-import painttools.StrokeStyle;
+import painttools.StrokeStyleEnum;
 
 public abstract class DragElement extends PaintElement {
     protected Point sPoint;
     protected Point fPoint;
 
-    public DragElement(Color clr, Point pt1, Point pt2, int dim, StrokeStyle style) {
+    public DragElement(Color clr, Point pt1, Point pt2, int dim, StrokeStyleEnum style) {
         super(clr, dim, style);
         this.sPoint = pt1;
         this.fPoint = pt2;

@@ -10,11 +10,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import paintshapetools.RectangleElement;
-import painttools.StrokeStyle;
+
+import painttools.StrokeStyleEnum;
 
 public class RoundRectElement extends RectangleElement {
-    public RoundRectElement(Color clr, Point pt1, Point pt2, int dim, StrokeStyle style) {
+    public RoundRectElement(Color clr, Point pt1, Point pt2, int dim, StrokeStyleEnum style) {
         super(clr, pt1, pt2, dim, style);
     }
 
@@ -23,7 +23,7 @@ public class RoundRectElement extends RectangleElement {
         g2d.setPaint(this.color);
         g2d.setStroke(new BasicStroke((float)this.strokeWidth, 1, 0));
         int[] arcs = new int[]{32, 32};
-        if(this.strokeStyle == StrokeStyle.OPEN_ROUND_RECT) {
+        if(this.strokeStyle == StrokeStyleEnum.OPEN_ROUND_RECT) {
             if(this.fPoint.x - this.sPoint.x < 0 && this.fPoint.y - this.sPoint.y < 0) {
                 g2d.drawRoundRect(this.fPoint.x, this.fPoint.y, Math.abs(this.fPoint.x - this.sPoint.x), Math.abs(this.fPoint.y - this.sPoint.y), arcs[0], arcs[1]);
             }
@@ -41,7 +41,7 @@ public class RoundRectElement extends RectangleElement {
             }
         }
 
-        if(this.strokeStyle == StrokeStyle.FILL_ROUND_RECT) {
+        if(this.strokeStyle == StrokeStyleEnum.FILL_ROUND_RECT) {
             if(this.fPoint.x - this.sPoint.x < 0 && this.fPoint.y - this.sPoint.y < 0) {
                 g2d.fillRoundRect(this.fPoint.x, this.fPoint.y, Math.abs(this.fPoint.x - this.sPoint.x), Math.abs(this.fPoint.y - this.sPoint.y), arcs[0], arcs[1]);
             }

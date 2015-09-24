@@ -13,22 +13,22 @@ import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import paintapplication.Main;
-import painttools.Tool;
+import painttools.ToolEnum;
 
 public class ToolButton extends JButton implements ActionListener {
     boolean hover;
     boolean selected;
     JLabel label;
-    Tool tool;
+    ToolEnum tool;
 
-    public ToolButton(String text, Tool tool) {
+    public ToolButton(String text, ToolEnum tool) {
         this.label = new JLabel(text);
         this.add(this.label);
         this.tool = tool;
         this.addActionListener(this);
     }
 
-    public ToolButton(Icon icon, Tool tool) {
+    public ToolButton(Icon icon, ToolEnum tool) {
         this.label = new JLabel(icon);
         this.setLayout(new BorderLayout());
         this.add(this.label);
@@ -42,7 +42,7 @@ public class ToolButton extends JButton implements ActionListener {
 
     public void actionPerformed(ActionEvent event) {
         Main.paint.drawPanel.setTool(this.tool);
-        System.out.println("Your Tool has been changed to " + this.tool);
+        System.out.println("Your ToolEnum has been changed to " + this.tool);
         Main.paint.repaint();
     }
 }

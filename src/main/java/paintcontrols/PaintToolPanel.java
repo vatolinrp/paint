@@ -9,11 +9,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import painttools.Tool;
+import painttools.ToolEnum;
 
 public class PaintToolPanel extends JPanel {
     protected ToolButton[] buttons;
@@ -46,16 +45,16 @@ public class PaintToolPanel extends JPanel {
         ImageIcon polygon = new ImageIcon(classLoader.getResource("polygon.png"));
         ImageIcon lineTool = new ImageIcon(classLoader.getResource("line-tool.png"));
         ImageIcon paintBrush = new ImageIcon(classLoader.getResource("paint-brush.png"));
-        this.buttons[0] = new ToolButton(var16, Tool.PENCIL);
-        this.buttons[1] = new ToolButton(paintBrush, Tool.BRUSH);
-        this.buttons[2] = new ToolButton(eraser, Tool.ERASER);
-        this.buttons[3] = new ToolButton(paintBucket, Tool.FILLER);
-        this.buttons[4] = new ToolButton(colorPicker, Tool.PICKER);
-        this.buttons[5] = new ToolButton(airBrush, Tool.AIRBRUSH);
-        this.buttons[6] = new ToolButton(rectangle, Tool.RECTANGLE);
-        this.buttons[7] = new ToolButton(oval, Tool.OVAL);
-        this.buttons[9] = new ToolButton(lineTool, Tool.LINE);
-        this.buttons[8] = new ToolButton(polygon, Tool.ROUND_RECT);
+        this.buttons[0] = new ToolButton(var16, ToolEnum.PENCIL);
+        this.buttons[1] = new ToolButton(paintBrush, ToolEnum.BRUSH);
+        this.buttons[2] = new ToolButton(eraser, ToolEnum.ERASER);
+        this.buttons[3] = new ToolButton(paintBucket, ToolEnum.FILLER);
+        this.buttons[4] = new ToolButton(colorPicker, ToolEnum.PICKER);
+        this.buttons[5] = new ToolButton(airBrush, ToolEnum.AIRBRUSH);
+        this.buttons[6] = new ToolButton(rectangle, ToolEnum.RECTANGLE);
+        this.buttons[7] = new ToolButton(oval, ToolEnum.OVAL);
+        this.buttons[9] = new ToolButton(lineTool, ToolEnum.LINE);
+        this.buttons[8] = new ToolButton(polygon, ToolEnum.ROUND_RECT);
 
         for(int i = 0; i < this.buttons.length; ++i) {
             toolPanel.add(this.buttons[i]);

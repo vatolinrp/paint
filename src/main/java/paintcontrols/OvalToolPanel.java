@@ -1,15 +1,11 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package paintcontrols;
 
-import paintcontrols.RectShapeToolPanel;
-import painttools.Tool;
+import painttools.ToolEnum;
 
-public class OvalToolPanel extends RectShapeToolPanel {
-    public OvalToolPanel(Tool tool, int stroke) {
+public class OvalToolPanel extends RectShapeToolPanel
+{
+    public OvalToolPanel(ToolEnum tool, int stroke)
+    {
         super(tool, stroke);
     }
 }

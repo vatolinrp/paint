@@ -6,14 +6,13 @@
 package paintdrawtools;
 
 import java.awt.Color;
-import paintdrawtools.BrushTool;
-import paintdrawtools.EraserElement;
-import painttools.StrokeStyle;
+
+import painttools.StrokeStyleEnum;
 
 public class EraserTool extends BrushTool {
     EraserElement element;
 
-    public EraserTool(Color clr, int dim, StrokeStyle style) {
+    public EraserTool(Color clr, int dim, StrokeStyleEnum style) {
         super(clr, dim, style);
     }
 }

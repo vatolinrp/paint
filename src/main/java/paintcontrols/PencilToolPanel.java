@@ -12,20 +12,19 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import paintapplication.Main;
-import paintcontrols.ToolOptionPanel;
-import painttools.StrokeStyle;
-import painttools.Tool;
+import painttools.StrokeStyleEnum;
+import painttools.ToolEnum;
 import paintvisuals.StrokePanel;
 
 public class PencilToolPanel extends ToolOptionPanel {
-    public StrokeStyle[] strokeStyleList;
+    public StrokeStyleEnum[] strokeStyleList;
     protected JSlider strokeSlider;
     protected JPanel showStrokePanel;
     protected StrokePanel showStroke;
 
-    public PencilToolPanel(Tool tool, int stroke) {
+    public PencilToolPanel(ToolEnum tool, int stroke) {
         super(tool);
-        this.strokeStyleList = new StrokeStyle[]{StrokeStyle.DOT_CIRC, StrokeStyle.DOT_RECT, StrokeStyle.LINE, StrokeStyle.TRIANGLE, StrokeStyle.RIBBON};
+        this.strokeStyleList = new StrokeStyleEnum[]{StrokeStyleEnum.DOT_CIRC, StrokeStyleEnum.DOT_RECT, StrokeStyleEnum.LINE, StrokeStyleEnum.TRIANGLE, StrokeStyleEnum.RIBBON};
         this.setLayout(new FlowLayout());
         this.strokeSlider = new JSlider(0, 0, 16, 1);
         this.strokeSlider.setPaintTicks(false);
@@ -57,7 +56,7 @@ public class PencilToolPanel extends ToolOptionPanel {
         public void stateChanged(ChangeEvent event) {
             Main.paint.drawPanel.tool.setStrokeWidth(PencilToolPanel.this.strokeSlider.getValue());
             PencilToolPanel.this.repaint();
-            System.out.println("Tool: " + Main.paint.drawPanel.tool + "  - - Stroke: " + Main.paint.drawPanel.tool.getStroke());
+            System.out.println("ToolEnum: " + Main.paint.drawPanel.tool + "  - - Stroke: " + Main.paint.drawPanel.tool.getStroke());
         }
     }
 }

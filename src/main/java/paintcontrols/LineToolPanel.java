@@ -5,11 +5,10 @@
 
 package paintcontrols;
 
-import paintcontrols.DragShapeToolPanel;
-import painttools.Tool;
+import painttools.ToolEnum;
 
 public class LineToolPanel extends DragShapeToolPanel {
-    public LineToolPanel(Tool tool, int stroke) {
+    public LineToolPanel(ToolEnum tool, int stroke) {
         super(tool, stroke);
     }
 }

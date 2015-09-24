@@ -5,11 +5,10 @@
 
 package paintcontrols;
 
-import paintcontrols.RectShapeToolPanel;
-import painttools.Tool;
+import painttools.ToolEnum;
 
 public class RectangleToolPanel extends RectShapeToolPanel {
-    public RectangleToolPanel(Tool tool, int stroke) {
+    public RectangleToolPanel(ToolEnum tool, int stroke) {
         super(tool, stroke);
     }
 }

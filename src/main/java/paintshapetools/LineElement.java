@@ -10,11 +10,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import paintshapetools.DragElement;
-import painttools.StrokeStyle;
+
+import painttools.StrokeStyleEnum;
 
 public class LineElement extends DragElement {
-    public LineElement(Color clr, Point pt1, Point pt2, int dim, StrokeStyle style) {
+    public LineElement(Color clr, Point pt1, Point pt2, int dim, StrokeStyleEnum style) {
         super(clr, pt1, pt2, dim, style);
         this.strokeStyle = style;
     }
@@ -23,11 +23,11 @@ public class LineElement extends DragElement {
         Graphics2D g2d = (Graphics2D)g;
         g2d.setPaint(this.color);
         g2d.setStroke(new BasicStroke((float)this.strokeWidth, 1, 1));
-        switch(this.strokeStyle.ordinal()) {
-            case 1:
+        switch(this.strokeStyle) {
+            case LINE:
                 g.drawLine(this.sPoint.x, this.sPoint.y, this.fPoint.x, this.fPoint.y);
                 break;
-            case 2:
+            case LINE_DASHED:
                 float[] dashes = new float[]{24.0F};
                 g2d.setStroke(new BasicStroke((float)this.strokeWidth, 1, 1, 32.0F, dashes, 0.0F));
                 g.drawLine(this.sPoint.x, this.sPoint.y, this.fPoint.x, this.fPoint.y);

@@ -16,18 +16,18 @@ import java.util.ArrayList;
 import javax.swing.JColorChooser;
 import javax.swing.JPanel;
 import myutilities.ColorPanel;
-import paintapplication.ColorOptionBox;
-import paintapplication.Main;
-import painttools.Tool;
+import painttools.ToolEnum;
 
-public class ColorPicker extends JPanel {
+public class ColorPicker extends JPanel
+{
     protected ColorOptionBox[] colorOptions;
     protected ArrayList points;
     protected JPanel currentClrPanel;
     protected Color[] colors;
     protected Color color;
 
-    public ColorPicker() {
+    public ColorPicker()
+    {
         this.setBackground(Color.darkGray);
         this.setPreferredSize(new Dimension(92, 92));
         this.setLayout(new BorderLayout());
@@ -35,9 +35,12 @@ public class ColorPicker extends JPanel {
         int count = 0;
 
         int holder;
-        for(int colorGrid = 1; colorGrid < 5; ++colorGrid) {
-            for(holder = 1; holder < 5; ++holder) {
-                for(int holder2 = 1; holder2 < 3; ++holder2) {
+        for (int colorGrid = 1; colorGrid < 5; ++colorGrid)
+        {
+            for (holder = 1; holder < 5; ++holder)
+            {
+                for (int holder2 = 1; holder2 < 3; ++holder2)
+                {
                     this.colors[count] = new Color(colorGrid * 51, holder * 51, holder2 * 127);
                     ++count;
                 }
@@ -48,10 +51,14 @@ public class ColorPicker extends JPanel {
         this.currentClrPanel = new JPanel();
         this.currentClrPanel.setBackground(Color.white);
         this.currentClrPanel.setPreferredSize(new Dimension(92, 92));
-        this.currentClrPanel.addMouseListener(new MouseAdapter() {
-            public void mousePressed(MouseEvent event) {
-                if(Main.paint.drawPanel.getTool() != Tool.ERASER) {
-                    ColorPicker.this.currentClrPanel.setBackground(JColorChooser.showDialog(Main.paint, "Change Color", Main.paint.drawPanel.brushColor));
+        this.currentClrPanel.addMouseListener(new MouseAdapter()
+        {
+            public void mousePressed(MouseEvent event)
+            {
+                if (Main.paint.drawPanel.getTool() != ToolEnum.ERASER)
+                {
+                    ColorPicker.this.currentClrPanel.setBackground(JColorChooser.showDialog(Main.paint, "Change Color",
+                            Main.paint.drawPanel.brushColor));
                     ColorPicker.this.color = ColorPicker.this.currentClrPanel.getBackground();
                     Main.paint.drawPanel.tool.setColor(ColorPicker.this.currentClrPanel.getBackground());
                     Main.paint.drawPanel.setBrushColor(ColorPicker.this.color);
@@ -64,7 +71,8 @@ public class ColorPicker extends JPanel {
         var5.setLayout(new GridLayout(2, 16, 6, 6));
         this.colorOptions = new ColorOptionBox[this.colors.length];
 
-        for(holder = 0; holder < this.colorOptions.length; ++holder) {
+        for (holder = 0; holder < this.colorOptions.length; ++holder)
+        {
             this.colorOptions[holder] = new ColorOptionBox(this.colors[holder]);
             var5.add(this.colorOptions[holder]);
         }
@@ -83,14 +91,17 @@ public class ColorPicker extends JPanel {
         this.add(var7, "Center");
     }
 
-    public void deselectAll() {
-        for(int i = 0; i < this.colorOptions.length; ++i) {
+    public void deselectAll()
+    {
+        for (int i = 0; i < this.colorOptions.length; ++i)
+        {
             this.colorOptions[i].selected = false;
         }
 
     }
 
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g)
+    {
         super.paintComponent(g);
     }
 }

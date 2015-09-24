@@ -5,11 +5,10 @@
 
 package paintcontrols;
 
-import paintcontrols.PencilToolPanel;
-import painttools.Tool;
+import painttools.ToolEnum;
 
 public class AirBrushToolPanel extends PencilToolPanel {
-    public AirBrushToolPanel(Tool tool, int stroke) {
+    public AirBrushToolPanel(ToolEnum tool, int stroke) {
         super(tool, stroke);
     }
 }

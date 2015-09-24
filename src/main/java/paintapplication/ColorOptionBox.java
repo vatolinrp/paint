@@ -13,11 +13,13 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import paintapplication.Main;
 
-public class ColorOptionBox extends JPanel {
+public class ColorOptionBox extends JPanel
+{
     Color color;
     boolean selected;
 
-    public ColorOptionBox(Color clr) {
+    public ColorOptionBox(Color clr)
+    {
         this.color = clr;
         this.selected = false;
         this.setBackground(this.color);
@@ -26,11 +28,13 @@ public class ColorOptionBox extends JPanel {
         this.addMouseListener(handler);
     }
 
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g)
+    {
         super.paintComponent(g);
         g.setColor(Color.lightGray);
         g.drawRect(0, 0, this.getWidth(), this.getHeight());
-        if(this.selected) {
+        if (this.selected)
+        {
             g.setColor(Color.lightGray);
             g.drawRect(0, 0, this.getWidth(), this.getHeight());
             g.setColor(Color.black);
@@ -39,11 +43,14 @@ public class ColorOptionBox extends JPanel {
 
     }
 
-    private class MouseHandler extends MouseAdapter {
-        private MouseHandler() {
+    private class MouseHandler extends MouseAdapter
+    {
+        private MouseHandler()
+        {
         }
 
-        public void mousePressed(MouseEvent event) {
+        public void mousePressed(MouseEvent event)
+        {
             Main.paint.colorPicker.deselectAll();
             ColorOptionBox.this.selected = true;
             Main.paint.drawPanel.setBrushColor(ColorOptionBox.this.color);
@@ -51,13 +58,16 @@ public class ColorOptionBox extends JPanel {
             Main.paint.repaint();
         }
 
-        public void mouseReleased(MouseEvent event) {
+        public void mouseReleased(MouseEvent event)
+        {
         }
 
-        public void mouseClicked(MouseEvent event) {
+        public void mouseClicked(MouseEvent event)
+        {
         }
 
-        public void mouseEntered(MouseEvent event) {
+        public void mouseEntered(MouseEvent event)
+        {
         }
     }
 }

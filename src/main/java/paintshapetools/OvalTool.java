@@ -6,12 +6,12 @@
 package paintshapetools;
 
 import java.awt.Color;
-import paintshapetools.DragTool;
-import painttools.StrokeStyle;
+
+import painttools.StrokeStyleEnum;
 
 public class OvalTool extends DragTool {
     public OvalTool(Color clr, int dim) {
         super(clr, dim);
-        this.strokeStyle = StrokeStyle.OPEN_OVAL;
+        this.strokeStyle = StrokeStyleEnum.OPEN_OVAL;
     }
 }

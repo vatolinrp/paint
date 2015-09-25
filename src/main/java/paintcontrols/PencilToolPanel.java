@@ -14,15 +14,13 @@ import javax.swing.event.ChangeListener;
 import paintapplication.Main;
 import painttools.StrokeStyleEnum;
 import painttools.ToolEnum;
-import paintvisuals.StrokePanel;
 
 public class PencilToolPanel extends ToolOptionPanel {
     public StrokeStyleEnum[] strokeStyleList;
     protected JSlider strokeSlider;
     protected JPanel showStrokePanel;
-    protected StrokePanel showStroke;
 
-    public PencilToolPanel(ToolEnum tool, int stroke) {
+    public PencilToolPanel(ToolEnum tool) {
         super(tool);
         this.strokeStyleList = new StrokeStyleEnum[]{StrokeStyleEnum.DOT_CIRC, StrokeStyleEnum.DOT_RECT, StrokeStyleEnum.LINE, StrokeStyleEnum.TRIANGLE, StrokeStyleEnum.RIBBON};
         this.setLayout(new FlowLayout());
@@ -31,20 +29,13 @@ public class PencilToolPanel extends ToolOptionPanel {
         this.strokeSlider.setMaximum(16);
         this.strokeSlider.setMinimum(1);
         this.strokeSlider.setMajorTickSpacing(1);
-        this.strokeSlider.setValue(stroke);
+        this.strokeSlider.setValue(5);
         this.strokeSlider.revalidate();
         PencilToolPanel.SlideChangeListener listener = new PencilToolPanel.SlideChangeListener();
         this.strokeSlider.addChangeListener(listener);
-
-        for(int i = 0; i < 3; ++i) {
-            ;
-        }
-
-        this.showStroke = new StrokePanel();
         this.showStrokePanel = new JPanel();
         this.showStrokePanel.setPreferredSize(new Dimension(92, 92));
         this.showStrokePanel.setLayout(new FlowLayout());
-        this.showStrokePanel.add(this.showStroke, "Center");
         this.add(this.showStrokePanel);
         this.add(this.strokeSlider);
     }
@@ -54,9 +45,8 @@ public class PencilToolPanel extends ToolOptionPanel {
         }
 
         public void stateChanged(ChangeEvent event) {
-            Main.paint.drawPanel.tool.setStrokeWidth(PencilToolPanel.this.strokeSlider.getValue());
             PencilToolPanel.this.repaint();
-            System.out.println("ToolEnum: " + Main.paint.drawPanel.tool + "  - - Stroke: " + Main.paint.drawPanel.tool.getStroke());
+            System.out.println("ToolEnum: " + Main.paint.drawPanel.tool);
         }
     }
 }

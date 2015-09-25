@@ -8,7 +8,7 @@ package paintcontrols;
 import painttools.ToolEnum;
 
 public class RectangleToolPanel extends RectShapeToolPanel {
-    public RectangleToolPanel(ToolEnum tool, int stroke) {
-        super(tool, stroke);
+    public RectangleToolPanel(ToolEnum tool) {
+        super(tool);
     }
 }

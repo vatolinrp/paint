@@ -15,8 +15,8 @@ public abstract class DragElement extends PaintElement {
     protected Point sPoint;
     protected Point fPoint;
 
-    public DragElement(Color clr, Point pt1, Point pt2, int dim, StrokeStyleEnum style) {
-        super(clr, dim, style);
+    public DragElement(Color clr, Point pt1, Point pt2, StrokeStyleEnum style) {
+        super(clr, style);
         this.sPoint = pt1;
         this.fPoint = pt2;
     }

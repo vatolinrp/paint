@@ -21,8 +21,8 @@ public class RectShapeToolPanel extends DragShapeToolPanel {
     JButton fillButton;
     JButton unFillButton;
 
-    public RectShapeToolPanel(ToolEnum tool, int stroke) {
-        super(tool, stroke);
+    public RectShapeToolPanel(ToolEnum tool) {
+        super(tool);
         this.remove(this.buttonHolder);
         JPanel fillButtonPanel = new JPanel();
         fillButtonPanel.setLayout(new GridLayout(1, 2));

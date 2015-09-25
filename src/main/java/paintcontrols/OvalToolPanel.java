@@ -4,8 +4,8 @@ import painttools.ToolEnum;
 
 public class OvalToolPanel extends RectShapeToolPanel
 {
-    public OvalToolPanel(ToolEnum tool, int stroke)
+    public OvalToolPanel(ToolEnum tool)
     {
-        super(tool, stroke);
+        super(tool);
     }
 }

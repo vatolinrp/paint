@@ -15,25 +15,21 @@ public abstract class PaintElement implements Serializable {
     protected Point coors;
     protected Color color;
     protected StrokeStyleEnum strokeStyle;
-    protected int strokeWidth;
 
     public PaintElement(Point pt, Color clr, int dim, StrokeStyleEnum style) {
         this.coors = pt;
         this.color = clr;
         this.strokeStyle = style;
-        this.strokeWidth = dim;
     }
 
-    public PaintElement(Point pt, Color clr, int dim) {
+    public PaintElement(Point pt, Color clr) {
         this.coors = pt;
         this.color = clr;
-        this.strokeWidth = dim;
         this.strokeStyle = StrokeStyleEnum.FILL_RECT;
     }
 
-    public PaintElement(Color clr, int dim, StrokeStyleEnum style) {
+    public PaintElement(Color clr, StrokeStyleEnum style) {
         this.color = clr;
-        this.strokeWidth = dim;
         this.strokeStyle = style;
     }
 
@@ -54,14 +50,6 @@ public abstract class PaintElement implements Serializable {
 
     public void setColor(Color clr) {
         this.color = clr;
-    }
-
-    public int getStroke() {
-        return this.strokeWidth;
-    }
-
-    public void setStrokeWidth(int str) {
-        this.strokeWidth = str;
     }
 
     public StrokeStyleEnum getStrokeStyle() {

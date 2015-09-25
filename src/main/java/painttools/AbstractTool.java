@@ -9,14 +9,12 @@ public class AbstractTool implements Serializable
     protected Point pPoint;
     protected Point cPoint;
     protected StrokeStyleEnum strokeStyle;
-    protected int strokeWidth;
     protected boolean isDrawing;
     protected Color color;
 
-    public AbstractTool(Color clr, int dim)
+    public AbstractTool(Color clr)
     {
         this.color = clr;
-        this.strokeWidth = dim;
     }
 
     public void setPPoint(Point pt)
@@ -59,11 +57,6 @@ public class AbstractTool implements Serializable
         this.strokeStyle = style;
     }
 
-    public void setStrokeWidth(int dim)
-    {
-        this.strokeWidth = dim;
-    }
-
     public boolean isDrawing()
     {
         return this.isDrawing;
@@ -72,10 +65,5 @@ public class AbstractTool implements Serializable
     public void setDrawing(boolean b)
     {
         this.isDrawing = b;
-    }
-
-    public int getStroke()
-    {
-        return this.strokeWidth;
     }
 }

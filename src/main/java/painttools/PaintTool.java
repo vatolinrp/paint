@@ -8,9 +8,9 @@ public abstract class PaintTool extends AbstractTool
 {
     protected PaintElement element;
 
-    public PaintTool(Color clr, int dim)
+    public PaintTool(Color clr)
     {
-        super(clr, dim);
+        super(clr);
         this.isDrawing = false;
     }
 

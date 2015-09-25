@@ -14,14 +14,14 @@ import java.awt.Point;
 import painttools.StrokeStyleEnum;
 
 public class RectangleElement extends DragElement {
-    public RectangleElement(Color clr, Point pt1, Point pt2, int dim, StrokeStyleEnum style) {
-        super(clr, pt1, pt2, dim, style);
+    public RectangleElement(Color clr, Point pt1, Point pt2, StrokeStyleEnum style) {
+        super(clr, pt1, pt2, style);
     }
 
     public void update(Graphics g) {
         Graphics2D g2d = (Graphics2D)g;
         g2d.setPaint(this.color);
-        g2d.setStroke(new BasicStroke((float)this.strokeWidth, 1, 0));
+        g2d.setStroke(new BasicStroke((float)5, 1, 0));
         if(this.strokeStyle == StrokeStyleEnum.OPEN_RECT) {
             if(this.fPoint.x - this.sPoint.x < 0 && this.fPoint.y - this.sPoint.y < 0) {
                 g2d.drawRect(this.fPoint.x, this.fPoint.y, Math.abs(this.fPoint.x - this.sPoint.x), Math.abs(this.fPoint.y - this.sPoint.y));

@@ -13,8 +13,8 @@ import painttools.ToolEnum;
 import paintvisuals.ToolOptionIcon;
 
 public class DragShapeToolPanel extends BrushToolPanel {
-    public DragShapeToolPanel(ToolEnum tool, int stroke) {
-        super(tool, stroke);
+    public DragShapeToolPanel(ToolEnum tool) {
+        super(tool);
         this.buttonHolder.remove(this.strokeStyles[0]);
         this.buttonHolder.setLayout(new GridLayout(2, 1));
         this.buttonHolder.setPreferredSize(new Dimension(100, 92));

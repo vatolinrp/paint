@@ -8,7 +8,7 @@ package paintcontrols;
 import painttools.ToolEnum;
 
 public class LineToolPanel extends DragShapeToolPanel {
-    public LineToolPanel(ToolEnum tool, int stroke) {
-        super(tool, stroke);
+    public LineToolPanel(ToolEnum tool) {
+        super(tool);
     }
 }

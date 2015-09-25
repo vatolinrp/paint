@@ -10,8 +10,8 @@ import java.awt.Color;
 import painttools.StrokeStyleEnum;
 
 public class RectangleTool extends DragTool {
-    public RectangleTool(Color clr, int dim) {
-        super(clr, dim);
+    public RectangleTool(Color clr) {
+        super(clr);
         this.strokeStyle = StrokeStyleEnum.OPEN_RECT;
     }
 }

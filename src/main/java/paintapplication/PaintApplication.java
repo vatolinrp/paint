@@ -2,9 +2,6 @@ package paintapplication;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
@@ -26,7 +23,7 @@ public class PaintApplication extends JFrame
         this.drawPanel = new DrawPanel();
         this.menuBar = new PaintMenuBar();
         this.colorPicker = new ColorPicker();
-        this.paintTools = new PaintToolPanel(new PencilToolPanel(ToolEnum.PENCIL, 1));
+        this.paintTools = new PaintToolPanel(new PencilToolPanel(ToolEnum.PENCIL));
         this.add(this.menuBar, "North");
         this.add(this.colorPicker, "South");
         this.add(this.paintTools, "West");

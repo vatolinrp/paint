@@ -2,7 +2,6 @@ package paintapplication;
 
 import painttools.ToolEnum;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JMenu;
@@ -51,11 +50,6 @@ public class PaintMenuBar extends JMenuBar
 
     private class ItemHandler implements ActionListener
     {
-        private ItemHandler()
-        {
-
-        }
-
         public void actionPerformed(ActionEvent event)
         {
             if (event.getSource() == PaintMenuBar.this.quit)

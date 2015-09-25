@@ -13,25 +13,19 @@ import java.awt.Point;
 
 import painttools.StrokeStyleEnum;
 
-public class LineElement extends DragElement {
-    public LineElement(Color clr, Point pt1, Point pt2, int dim, StrokeStyleEnum style) {
-        super(clr, pt1, pt2, dim, style);
+public class LineElement extends DragElement
+{
+    public LineElement(Color clr, Point pt1, Point pt2, StrokeStyleEnum style)
+    {
+        super(clr, pt1, pt2, style);
         this.strokeStyle = style;
     }
 
-    public void update(Graphics g) {
-        Graphics2D g2d = (Graphics2D)g;
+    public void update(Graphics g)
+    {
+        Graphics2D g2d = (Graphics2D) g;
         g2d.setPaint(this.color);
-        g2d.setStroke(new BasicStroke((float)this.strokeWidth, 1, 1));
-        switch(this.strokeStyle) {
-            case LINE:
-                g.drawLine(this.sPoint.x, this.sPoint.y, this.fPoint.x, this.fPoint.y);
-                break;
-            case LINE_DASHED:
-                float[] dashes = new float[]{24.0F};
-                g2d.setStroke(new BasicStroke((float)this.strokeWidth, 1, 1, 32.0F, dashes, 0.0F));
-                g.drawLine(this.sPoint.x, this.sPoint.y, this.fPoint.x, this.fPoint.y);
-        }
-
+        g2d.setStroke(new BasicStroke((float) 5, 1, 1));
+        g.drawLine(this.sPoint.x, this.sPoint.y, this.fPoint.x, this.fPoint.y);
     }
 }

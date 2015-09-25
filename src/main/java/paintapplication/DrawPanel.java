@@ -18,22 +18,11 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
-import paintcontrols.AirBrushToolPanel;
-import paintcontrols.BrushToolPanel;
 import paintcontrols.ColorPickerToolPanel;
 import paintcontrols.DragShapeToolPanel;
-import paintcontrols.EraserToolPanel;
 import paintcontrols.PencilToolPanel;
 import paintcontrols.RectShapeToolPanel;
-import paintdrawtools.AirBrushElement;
-import paintdrawtools.AirBrushTool;
-import paintdrawtools.BrushElement;
-import paintdrawtools.BrushTool;
-import paintdrawtools.EraserElement;
-import paintdrawtools.EraserTool;
 import paintdrawtools.PaintElement;
-import paintdrawtools.PencilElement;
-import paintdrawtools.PencilTool;
 import paintshapetools.DragTool;
 import paintshapetools.LineElement;
 import paintshapetools.LineTool;
@@ -41,8 +30,6 @@ import paintshapetools.OvalElement;
 import paintshapetools.OvalTool;
 import paintshapetools.RectangleElement;
 import paintshapetools.RectangleTool;
-import paintshapetools.RoundRectElement;
-import paintshapetools.RoundRectTool;
 import painttools.AbstractTool;
 import painttools.FillerElement;
 import painttools.FillerTool;
@@ -65,14 +52,14 @@ public class DrawPanel extends JPanel implements Runnable
     {
         this.backgroundColor = Color.white;
         this.setBackground(this.backgroundColor);
-        this.setPreferredSize(new Dimension(1024, 768));
+        this.setPreferredSize(new Dimension(600, 600));
         DrawPanel.MouseHandler handler = new DrawPanel.MouseHandler();
         this.addMouseListener(handler);
         this.elements = new ArrayList();
         this.elements.add(new FillerElement(this.getBackground()));
         this.mousePressed = Boolean.valueOf(false);
         this.brushColor = Color.black;
-        this.tool = new PencilTool(this.brushColor, 1);
+        this.tool = new LineTool(this.brushColor);
         this.currentTool = ToolEnum.PENCIL;
         this.frameCount = -1;
     }
@@ -108,30 +95,6 @@ public class DrawPanel extends JPanel implements Runnable
                                 {
                                     this.tool.setCPoint(new Point(this.getMousePosition()));
                                 }
-
-                                if (this.currentTool == ToolEnum.PENCIL)
-                                {
-                                    this.elements.add(new PencilElement(this.tool.getPPoint(), this.tool.getCPoint(),
-                                            this.tool.getColor(), this.tool.getStroke()));
-                                }
-
-                                if (this.currentTool == ToolEnum.BRUSH)
-                                {
-                                    this.elements.add(new BrushElement(this.tool.getPPoint(), this.tool.getCPoint(),
-                                            this.tool.getColor(), this.tool.getStroke(), this.tool.getStrokeStyle()));
-                                }
-
-                                if (this.currentTool == ToolEnum.ERASER)
-                                {
-                                    this.elements.add(new EraserElement(this.tool.getPPoint(), this.tool.getColor(),
-                                            this.tool.getStroke(), this.tool.getStrokeStyle()));
-                                }
-
-                                if (this.currentTool == ToolEnum.AIRBRUSH)
-                                {
-                                    this.elements.add(new AirBrushElement(this.tool.getPPoint(), this.tool.getColor(),
-                                            this.tool.getStroke(), this.tool.getStrokeStyle()));
-                                }
                             }
 
                             this.repaint();
@@ -160,7 +123,7 @@ public class DrawPanel extends JPanel implements Runnable
                             ((DragTool) this.tool).setSPoint(this.getMousePosition());
                             this.tool.setCPoint(this.getMousePosition());
                             this.addTemporaryDragElement(this.tool.getColor(), ((DragTool) this.tool).getSPoint(),
-                                    this.tool.getCPoint(), this.tool.getStroke(), this.tool.getStrokeStyle());
+                                    this.tool.getCPoint(), this.tool.getStrokeStyle());
                         }
 
                         if (this.getMousePosition() != this.tool.getCPoint())
@@ -170,7 +133,7 @@ public class DrawPanel extends JPanel implements Runnable
                             this.tool.setCPoint(this.getMousePosition());
                             this.elements.remove(this.elements.size() - 1);
                             this.addTemporaryDragElement(this.tool.getColor(), ((DragTool) this.tool).getSPoint(),
-                                    this.tool.getCPoint(), this.tool.getStroke(), this.tool.getStrokeStyle());
+                                    this.tool.getCPoint(), this.tool.getStrokeStyle());
                         }
                     }
 
@@ -182,23 +145,15 @@ public class DrawPanel extends JPanel implements Runnable
                         {
                         case OVAL:
                             this.elements.add(new OvalElement(this.tool.getColor(), ((DragTool) this.tool).getSPoint(),
-                                    ((DragTool) this.tool).getFPoint(), this.tool.getStroke(), this.tool
-                                            .getStrokeStyle()));
+                                    ((DragTool) this.tool).getFPoint(), this.tool.getStrokeStyle()));
                             break;
                         case RECTANGLE:
                             this.elements.add(new RectangleElement(this.tool.getColor(), ((DragTool) this.tool)
-                                    .getSPoint(), ((DragTool) this.tool).getFPoint(), this.tool.getStroke(), this.tool
-                                    .getStrokeStyle()));
-                            break;
-                        case ROUND_RECT:
-                            this.elements.add(new RoundRectElement(this.tool.getColor(), ((DragTool) this.tool)
-                                    .getSPoint(), this.tool.getCPoint(), this.tool.getStroke(), this.tool
-                                    .getStrokeStyle()));
+                                    .getSPoint(), ((DragTool) this.tool).getFPoint(), this.tool.getStrokeStyle()));
                             break;
                         case LINE:
                             this.elements.add(new LineElement(this.tool.getColor(), ((DragTool) this.tool).getSPoint(),
-                                    ((DragTool) this.tool).getFPoint(), this.tool.getStroke(), this.tool
-                                            .getStrokeStyle()));
+                                    ((DragTool) this.tool).getFPoint(), this.tool.getStrokeStyle()));
                         }
                     }
 
@@ -267,37 +222,25 @@ public class DrawPanel extends JPanel implements Runnable
 
     }
 
-    public void addTemporaryDragElement(Color clr, Point sPoint, Point cPoint, int strokeW, StrokeStyleEnum strokeS)
+    public void addTemporaryDragElement(Color clr, Point sPoint, Point cPoint, StrokeStyleEnum strokeS)
     {
         switch (currentTool)
         {
         case OVAL:
-            this.elements.add(new OvalElement(clr, sPoint, cPoint, strokeW, strokeS));
+            this.elements.add(new OvalElement(clr, sPoint, cPoint, strokeS));
             break;
         case RECTANGLE:
-            this.elements.add(new RectangleElement(clr, sPoint, cPoint, strokeW, strokeS));
-            break;
-        case ROUND_RECT:
-            this.elements.add(new RoundRectElement(clr, sPoint, cPoint, strokeW, strokeS));
+            this.elements.add(new RectangleElement(clr, sPoint, cPoint, strokeS));
             break;
         case LINE:
-            this.elements.add(new LineElement(clr, sPoint, cPoint, strokeW, strokeS));
+            this.elements.add(new LineElement(clr, sPoint, cPoint, strokeS));
         }
 
     }
 
     public boolean isPaintingTool(ToolEnum tool)
     {
-        switch (tool)
-        {
-        case PENCIL:
-        case BRUSH:
-        case AIRBRUSH:
-        case ERASER:
-            return true;
-        default:
-            return false;
-        }
+        return false;
     }
 
     public boolean isDraggingTool(ToolEnum tool)
@@ -306,7 +249,6 @@ public class DrawPanel extends JPanel implements Runnable
         {
         case OVAL:
         case RECTANGLE:
-        case ROUND_RECT:
         case LINE:
             return true;
         default:
@@ -343,53 +285,21 @@ public class DrawPanel extends JPanel implements Runnable
 
     public void setPaintTool(ToolEnum tool)
     {
-        int stroke = this.tool.getStroke();
-        if (tool != ToolEnum.ERASER && stroke >= 16)
-        {
-            this.tool.setStrokeWidth(16);
-        }
 
         switch (tool)
         {
         case OVAL:
-            this.tool = new OvalTool(this.brushColor, this.tool.getStroke());
-            Main.paint.paintTools.setToolOptionPanel(new RectShapeToolPanel(ToolEnum.OVAL, this.tool.getStroke()));
+            this.tool = new OvalTool(this.brushColor);
+            Main.paint.paintTools.setToolOptionPanel(new RectShapeToolPanel(ToolEnum.OVAL));
             break;
         case RECTANGLE:
-            this.tool = new RectangleTool(this.brushColor, this.tool.getStroke());
-            Main.paint.paintTools.setToolOptionPanel(new RectShapeToolPanel(ToolEnum.RECTANGLE, this.tool.getStroke()));
-            break;
-        case ROUND_RECT:
-            this.tool = new RoundRectTool(this.brushColor, this.tool.getStroke());
-            Main.paint.paintTools.setToolOptionPanel(new RectShapeToolPanel(ToolEnum.ROUND_RECT, this.tool.getStroke()));
+            this.tool = new RectangleTool(this.brushColor);
+            Main.paint.paintTools.setToolOptionPanel(new RectShapeToolPanel(ToolEnum.RECTANGLE));
             break;
         case LINE:
-            this.tool = new LineTool(this.brushColor, this.tool.getStroke(), StrokeStyleEnum.LINE);
-            Main.paint.paintTools.setToolOptionPanel(new DragShapeToolPanel(ToolEnum.LINE, this.tool.getStroke()));
+            this.tool = new LineTool(this.brushColor);
+            Main.paint.paintTools.setToolOptionPanel(new DragShapeToolPanel(ToolEnum.LINE));
             break;
-        case PENCIL:
-            this.tool = new PencilTool(this.brushColor, this.tool.getStroke());
-            Main.paint.paintTools.setToolOptionPanel(new PencilToolPanel(ToolEnum.PENCIL, this.tool.getStroke()));
-            break;
-        case BRUSH:
-            this.tool = new BrushTool(this.brushColor, this.tool.getStroke(), StrokeStyleEnum.LINE);
-            Main.paint.paintTools.setToolOptionPanel(new BrushToolPanel(ToolEnum.BRUSH, this.tool.getStroke()));
-            break;
-        case AIRBRUSH:
-            this.tool = new AirBrushTool(this.brushColor, this.tool.getStroke());
-            Main.paint.paintTools.setToolOptionPanel(new AirBrushToolPanel(ToolEnum.AIRBRUSH, this.tool.getStroke()));
-            break;
-        case ERASER:
-            this.tool = new EraserTool(this.getBackground(), this.tool.getStroke(), StrokeStyleEnum.SQUARE);
-            Main.paint.paintTools.setToolOptionPanel(new EraserToolPanel(ToolEnum.ERASER, this.tool.getStroke()));
-            break;
-        case FILLER:
-            this.tool = new FillerTool(this.brushColor, this.tool.getStroke());
-            Main.paint.paintTools.setToolOptionPanel(new PencilToolPanel(ToolEnum.PENCIL, this.tool.getStroke()));
-            break;
-        case BUCKET:
-            this.tool = new FillerTool(this.brushColor, this.tool.getStroke());
-            Main.paint.paintTools.setToolOptionPanel(new ColorPickerToolPanel(ToolEnum.PICKER, this.brushColor));
         }
 
     }

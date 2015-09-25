@@ -10,8 +10,8 @@ import painttools.AbstractTool;
 
 public abstract class ShapeTool extends AbstractTool
 {
-    public ShapeTool(Color clr, int dim)
+    public ShapeTool(Color clr)
     {
-        super(clr, dim);
+        super(clr);
     }
 }

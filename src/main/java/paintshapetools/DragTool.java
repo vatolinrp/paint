@@ -16,8 +16,8 @@ public abstract class DragTool extends AbstractTool {
     boolean finished = false;
     DragElement element;
 
-    public DragTool(Color clr, int dim) {
-        super(clr, dim);
+    public DragTool(Color clr) {
+        super(clr);
     }
 
     public Point getSPoint() {

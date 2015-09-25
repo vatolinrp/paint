@@ -10,8 +10,8 @@ import java.awt.Color;
 import painttools.StrokeStyleEnum;
 
 public class OvalTool extends DragTool {
-    public OvalTool(Color clr, int dim) {
-        super(clr, dim);
+    public OvalTool(Color clr) {
+        super(clr);
         this.strokeStyle = StrokeStyleEnum.OPEN_OVAL;
     }
 }

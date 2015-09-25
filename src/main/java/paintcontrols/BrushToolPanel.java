@@ -24,8 +24,8 @@ public class BrushToolPanel extends PencilToolPanel {
     protected BrushToolPanel.ButtonHandler handler;
     protected JPanel buttonHolder;
 
-    public BrushToolPanel(ToolEnum tool, int stroke) {
-        super(tool, stroke);
+    public BrushToolPanel(ToolEnum tool) {
+        super(tool);
         this.setLayout(new FlowLayout());
         this.strokeStyles = new JButton[3];
         this.styleIcons = new ToolOptionIcon[3];
@@ -56,7 +56,6 @@ public class BrushToolPanel extends PencilToolPanel {
             for(int i = 0; i < BrushToolPanel.this.strokeStyles.length; ++i) {
                 if(event.getSource() == BrushToolPanel.this.strokeStyles[i]) {
                     Main.paint.drawPanel.tool.setStrokeStyle(BrushToolPanel.this.strokeStyleList[i]);
-                    BrushToolPanel.this.showStroke.setStyle(Main.paint.drawPanel.tool.getStrokeStyle());
                     BrushToolPanel.this.repaint();
                     System.out.println("Style clicked: " + BrushToolPanel.this.strokeStyleList[i]);
                 }

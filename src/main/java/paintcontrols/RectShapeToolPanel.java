@@ -17,13 +17,13 @@ import painttools.StrokeStyleEnum;
 import painttools.ToolEnum;
 import paintvisuals.ToolOptionIcon;
 
-public class RectShapeToolPanel extends DragShapeToolPanel {
+public class RectShapeToolPanel extends ToolOptionPanel {
     JButton fillButton;
     JButton unFillButton;
 
     public RectShapeToolPanel(ToolEnum tool) {
         super(tool);
-        this.remove(this.buttonHolder);
+        //this.remove(this.buttonHolder);
         JPanel fillButtonPanel = new JPanel();
         fillButtonPanel.setLayout(new GridLayout(1, 2));
         fillButtonPanel.setBackground(Color.darkGray);
@@ -51,7 +51,7 @@ public class RectShapeToolPanel extends DragShapeToolPanel {
         fillButtonPanel.add(this.fillButton);
         fillButtonPanel.add(this.unFillButton);
         this.add(fillButtonPanel);
-        this.buttonHolder.setPreferredSize(new Dimension(100, 90));
+        //this.buttonHolder.setPreferredSize(new Dimension(100, 90));
         this.revalidate();
         this.repaint();
     }

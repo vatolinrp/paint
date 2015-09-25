@@ -6,7 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
 import paintcontrols.PaintToolPanel;
-import paintcontrols.PencilToolPanel;
+
+import paintcontrols.RectShapeToolPanel;
 import painttools.ToolEnum;
 
 public class PaintApplication extends JFrame
@@ -23,7 +24,7 @@ public class PaintApplication extends JFrame
         this.drawPanel = new DrawPanel();
         this.menuBar = new PaintMenuBar();
         this.colorPicker = new ColorPicker();
-        this.paintTools = new PaintToolPanel(new PencilToolPanel(ToolEnum.PENCIL));
+        this.paintTools = new PaintToolPanel(new RectShapeToolPanel(ToolEnum.LINE));
         this.add(this.menuBar, "North");
         this.add(this.colorPicker, "South");
         this.add(this.paintTools, "West");

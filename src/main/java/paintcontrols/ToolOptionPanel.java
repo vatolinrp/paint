@@ -5,8 +5,7 @@
 
 package paintcontrols;
 
-import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.*;
 import javax.swing.JPanel;
 import painttools.ToolEnum;
 
@@ -18,6 +17,7 @@ public abstract class ToolOptionPanel extends JPanel {
         this.tool = tool;
         this.setPreferredSize(new Dimension(164, 256));
         this.setBackground(Color.darkGray);
+        this.setLayout(new FlowLayout());
     }
 
     public void setColor(Color clr) {

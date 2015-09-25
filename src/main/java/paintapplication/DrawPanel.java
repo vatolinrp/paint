@@ -18,9 +18,6 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
-import paintcontrols.ColorPickerToolPanel;
-import paintcontrols.DragShapeToolPanel;
-import paintcontrols.PencilToolPanel;
 import paintcontrols.RectShapeToolPanel;
 import paintdrawtools.PaintElement;
 import paintshapetools.DragTool;
@@ -32,7 +29,6 @@ import paintshapetools.RectangleElement;
 import paintshapetools.RectangleTool;
 import painttools.AbstractTool;
 import painttools.FillerElement;
-import painttools.FillerTool;
 import painttools.StrokeStyleEnum;
 import painttools.ToolEnum;
 
@@ -298,7 +294,6 @@ public class DrawPanel extends JPanel implements Runnable
             break;
         case LINE:
             this.tool = new LineTool(this.brushColor);
-            Main.paint.paintTools.setToolOptionPanel(new DragShapeToolPanel(ToolEnum.LINE));
             break;
         }
 

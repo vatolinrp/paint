@@ -20,20 +20,8 @@ public class ToolOptionIcon extends JPanel {
 
     public void paintComponent(Graphics g) {
         g.setColor(Main.paint.drawPanel.tool.getColor());
-        if(this.style == StrokeStyleEnum.DOT_CIRC) {
-            g.fillOval(this.getWidth() / 7, this.getHeight() / 7, this.getWidth() / 7, this.getHeight() / 7 * 4);
-            g.fillOval(this.getWidth() / 7 * 3, this.getHeight() / 7, this.getWidth() / 7, this.getHeight() / 7 * 4);
-            g.fillOval(this.getWidth() / 7 * 5, this.getHeight() / 7, this.getWidth() / 7, this.getHeight() / 7 * 4);
-        } else if(this.style == StrokeStyleEnum.DOT_RECT) {
-            g.fillRect(this.getWidth() / 7, this.getHeight() / 7, this.getWidth() / 7, this.getHeight() / 7 * 4);
-            g.fillRect(this.getWidth() / 7 * 3, this.getHeight() / 7, this.getWidth() / 7, this.getHeight() / 7 * 4);
-            g.fillRect(this.getWidth() / 7 * 5, this.getHeight() / 7, this.getWidth() / 7, this.getHeight() / 7 * 4);
-        } else if(this.style == StrokeStyleEnum.LINE) {
+        if(this.style == StrokeStyleEnum.LINE) {
             g.fillRect(this.getWidth() / 9, this.getHeight() / 9 * 4, this.getWidth() / 9 * 7 + this.getWidth() / 9 * 2 / 3, this.getHeight() / 9 * 2);
-        } else if(this.style == StrokeStyleEnum.LINE_DASHED) {
-            g.fillRect(this.getWidth() / 9 * 1, this.getHeight() / 9 * 4, this.getWidth() / 9 * 3 / 2, this.getHeight() / 9 * 2);
-            g.fillRect(this.getWidth() / 9 * 4, this.getHeight() / 9 * 4, this.getWidth() / 9 * 3 / 2, this.getHeight() / 9 * 2);
-            g.fillRect(this.getWidth() / 9 * 7, this.getHeight() / 9 * 4, this.getWidth() / 9 * 3 / 2, this.getHeight() / 9 * 2);
         }
 
         if(this.style == StrokeStyleEnum.OPEN_RECT) {
@@ -44,10 +32,6 @@ public class ToolOptionIcon extends JPanel {
             g.fillRect(this.getWidth() / 5, this.getHeight() / 5, this.getWidth() / 5 * 3, this.getHeight() / 5 * 3);
         } else if(this.style == StrokeStyleEnum.FILL_OVAL) {
             g.fillOval(this.getWidth() / 5, this.getHeight() / 5, this.getWidth() / 5 * 3, this.getHeight() / 5 * 3);
-        } else if(this.style == StrokeStyleEnum.FILL_ROUND_RECT) {
-            g.fillRoundRect(this.getWidth() / 5, this.getHeight() / 5, this.getWidth() / 5 * 3, this.getHeight() / 5 * 3, 10, 10);
-        } else if(this.style == StrokeStyleEnum.OPEN_ROUND_RECT) {
-            g.drawRoundRect(this.getWidth() / 5, this.getHeight() / 5, this.getWidth() / 5 * 3, this.getHeight() / 5 * 3, 10, 10);
         }
 
         g.setColor(Color.black);

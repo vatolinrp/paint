@@ -28,7 +28,6 @@ import paintshapetools.OvalTool;
 import paintshapetools.RectangleElement;
 import paintshapetools.RectangleTool;
 import painttools.AbstractTool;
-import painttools.FillerElement;
 import painttools.StrokeStyleEnum;
 import painttools.ToolEnum;
 
@@ -52,7 +51,6 @@ public class DrawPanel extends JPanel implements Runnable
         DrawPanel.MouseHandler handler = new DrawPanel.MouseHandler();
         this.addMouseListener(handler);
         this.elements = new ArrayList();
-        this.elements.add(new FillerElement(this.getBackground()));
         this.mousePressed = Boolean.valueOf(false);
         this.brushColor = Color.black;
         this.tool = new LineTool(this.brushColor);
@@ -153,12 +151,6 @@ public class DrawPanel extends JPanel implements Runnable
                         }
                     }
 
-                    this.repaint();
-                }
-
-                if (this.currentTool == ToolEnum.FILLER && this.mousePressed.booleanValue())
-                {
-                    this.elements.set(0, new FillerElement(this.brushColor));
                     this.repaint();
                 }
 

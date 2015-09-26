@@ -23,7 +23,6 @@ public class RectShapeToolPanel extends ToolOptionPanel {
 
     public RectShapeToolPanel(ToolEnum tool) {
         super(tool);
-        //this.remove(this.buttonHolder);
         JPanel fillButtonPanel = new JPanel();
         fillButtonPanel.setLayout(new GridLayout(1, 2));
         fillButtonPanel.setBackground(Color.darkGray);
@@ -43,15 +42,11 @@ public class RectShapeToolPanel extends ToolOptionPanel {
             this.unFillButton.add(new ToolOptionIcon(StrokeStyleEnum.OPEN_OVAL));
         }
 
-        if(tool == ToolEnum.ROUND_RECT) {
-            this.fillButton.add(new ToolOptionIcon(StrokeStyleEnum.FILL_ROUND_RECT));
-            this.unFillButton.add(new ToolOptionIcon(StrokeStyleEnum.OPEN_ROUND_RECT));
-        }
+
 
         fillButtonPanel.add(this.fillButton);
         fillButtonPanel.add(this.unFillButton);
         this.add(fillButtonPanel);
-        //this.buttonHolder.setPreferredSize(new Dimension(100, 90));
         this.revalidate();
         this.repaint();
     }
@@ -66,9 +61,6 @@ public class RectShapeToolPanel extends ToolOptionPanel {
                     case RECTANGLE:
                         Main.paint.drawPanel.tool.setStrokeStyle(StrokeStyleEnum.FILL_RECT);
                         break;
-                    case ROUND_RECT:
-                        Main.paint.drawPanel.tool.setStrokeStyle(StrokeStyleEnum.FILL_ROUND_RECT);
-                        break;
                     case OVAL:
                         Main.paint.drawPanel.tool.setStrokeStyle(StrokeStyleEnum.FILL_OVAL);
                 }
@@ -78,9 +70,6 @@ public class RectShapeToolPanel extends ToolOptionPanel {
                 switch(RectShapeToolPanel.this.tool) {
                     case RECTANGLE:
                         Main.paint.drawPanel.tool.setStrokeStyle(StrokeStyleEnum.OPEN_RECT);
-                        break;
-                    case ROUND_RECT:
-                        Main.paint.drawPanel.tool.setStrokeStyle(StrokeStyleEnum.OPEN_ROUND_RECT);
                         break;
                     case OVAL:
                         Main.paint.drawPanel.tool.setStrokeStyle(StrokeStyleEnum.OPEN_OVAL);

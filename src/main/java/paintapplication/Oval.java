@@ -1,4 +1,4 @@
-package paintshapetools;
+package paintapplication;
 
 import java.awt.Color;
 import java.awt.Graphics;

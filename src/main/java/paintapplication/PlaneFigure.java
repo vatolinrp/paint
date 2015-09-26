@@ -1,6 +1,6 @@
-package paintshapetools;
+package paintapplication;
 
-import paintdrawtools.Figure;
+import paintapplication.Figure;
 
 import java.awt.Color;
 

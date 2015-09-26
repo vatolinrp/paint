@@ -1,14 +1,12 @@
 package paintapplication;
 
-import painttools.ToolEnum;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-public class PaintMenuBar extends JMenuBar
+public class Menu extends JMenuBar
 {
     JMenu file;
     JMenuItem quit;
@@ -18,9 +16,9 @@ public class PaintMenuBar extends JMenuBar
     JMenuItem drawEllipse;
     JMenuItem drawLine;
 
-    PaintMenuBar()
+    Menu()
     {
-        PaintMenuBar.ItemHandler itemHandler = new PaintMenuBar.ItemHandler();
+        Menu.ItemHandler itemHandler = new Menu.ItemHandler();
 
         file = new JMenu("File");
         elements = new JMenu("Elements");
@@ -52,25 +50,25 @@ public class PaintMenuBar extends JMenuBar
     {
         public void actionPerformed(ActionEvent event)
         {
-            if (event.getSource() == PaintMenuBar.this.quit)
+            if (event.getSource() == Menu.this.quit)
             {
                 Main.paint.dispose();
                 System.exit(0);
             }
-            if (event.getSource() == PaintMenuBar.this.drawRectangle)
+            if (event.getSource() == Menu.this.drawRectangle)
             {
-                Main.paint.drawPanel.setTool(ToolEnum.RECTANGLE);
+                Main.paint.drawingPanel.setTool(FigureEnum.RECTANGLE);
             }
-            if (event.getSource() == PaintMenuBar.this.drawEllipse)
+            if (event.getSource() == Menu.this.drawEllipse)
             {
-                Main.paint.drawPanel.setTool(ToolEnum.OVAL);
+                Main.paint.drawingPanel.setTool(FigureEnum.OVAL);
             }
-            if (event.getSource() == PaintMenuBar.this.drawLine)
+            if (event.getSource() == Menu.this.drawLine)
             {
-                Main.paint.drawPanel.setTool(ToolEnum.LINE);
+                Main.paint.drawingPanel.setTool(FigureEnum.LINE);
             }
             Main.paint.repaint();
-            PaintMenuBar.this.setFocusable(false);
+            Menu.this.setFocusable(false);
         }
     }
 }

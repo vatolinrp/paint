@@ -1,9 +1,9 @@
-package paintdrawtools;
+package paintapplication;
 
 import java.awt.*;
 import java.io.Serializable;
 
-public abstract class Figure implements Serializable
+public abstract class Figure
 {
     protected Color lineColor;
 

@@ -2,7 +2,7 @@ package paintapplication;
 
 public class Main
 {
-    public static PaintApplication paint;
+    public static PaintFrame paint;
 
     public Main()
     {
@@ -10,6 +10,6 @@ public class Main
 
     public static void main(String[] args)
     {
-        paint = new PaintApplication();
+        paint = new PaintFrame();
     }
 }

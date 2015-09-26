@@ -1,6 +1,6 @@
-package painttools;
+package paintapplication;
 
-public enum ToolEnum
+public enum FigureEnum
 {
     PENCIL, ERASER, SQUARE, OVAL, LINE, POLYGON, PICKER, RECTANGLE
 }

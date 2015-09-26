@@ -1,18 +1,16 @@
-package paintshapetools;
+package paintapplication;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 
-import painttools.StrokeStyleEnum;
-
 public class Rectangle extends PlaneFigure
 {
     protected Point sPoint;
     protected Point fPoint;
 
-    public Rectangle(Color lineClr, Color fillClr, Point pt1, Point pt2, StrokeStyleEnum style)
+    public Rectangle(Color lineClr, Color fillClr, Point pt1, Point pt2)
     {
         this.fillColor=fillClr;
         this.lineColor=lineClr;

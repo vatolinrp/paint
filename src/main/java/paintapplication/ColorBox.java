@@ -7,16 +7,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
-public class ColorOptionBox extends JPanel
+public class ColorBox extends JPanel
 {
     private Color color;
 
-    public ColorOptionBox(Color clr)
+    public ColorBox(Color clr)
     {
         this.color = clr;
         this.setBackground(this.color);
         this.setPreferredSize(new Dimension(48, 48));
-        ColorOptionBox.MouseHandler handler = new ColorOptionBox.MouseHandler();
+        ColorBox.MouseHandler handler = new ColorBox.MouseHandler();
         this.addMouseListener(handler);
     }
 
@@ -37,11 +37,11 @@ public class ColorOptionBox extends JPanel
         {
             if(event.getButton() == MouseEvent.BUTTON1)
             {
-                Main.paint.drawPanel.setLineColor(ColorOptionBox.this.color);
+                Main.paint.drawingPanel.setLineColor(ColorBox.this.color);
             }
             if(event.getButton() == MouseEvent.BUTTON3)
             {
-                Main.paint.drawPanel.setFillColor(ColorOptionBox.this.color);
+                Main.paint.drawingPanel.setFillColor(ColorBox.this.color);
             }
             Main.paint.repaint();
         }

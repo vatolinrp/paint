@@ -5,42 +5,29 @@
 
 package paintapplication;
 
-import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.MouseInfo;
 import java.awt.Point;
-import java.awt.PointerInfo;
-import java.awt.Robot;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
-import paintdrawtools.Figure;
-import paintshapetools.DrawingTool;
-import paintshapetools.Line;
-import paintshapetools.Oval;
-import paintshapetools.Rectangle;
-import painttools.AbstractTool;
-import painttools.StrokeStyleEnum;
-import painttools.ToolEnum;
-
-public class DrawPanel extends JPanel implements Runnable
+public class DrawingPanel extends JPanel implements Runnable
 {
     public int frameCount;
     public ArrayList elements;
     protected Boolean mousePressed;
     protected boolean mouseClicked;
-    public ToolEnum currentTool;
+    public FigureEnum currentTool;
     public DrawingTool tool;
     protected Color lineColor;
     protected Color fillColor;
     public Color backgroundColor;
     protected Thread animator;
 
-    public DrawPanel()
+    public DrawingPanel()
     {
         this.backgroundColor = Color.white;
         this.setBackground(this.backgroundColor);
@@ -52,7 +39,7 @@ public class DrawPanel extends JPanel implements Runnable
         this.lineColor = Color.black;
         this.fillColor = Color.green;
         this.tool = new DrawingTool();
-        this.currentTool = ToolEnum.LINE;
+        this.currentTool = FigureEnum.LINE;
         this.frameCount = -1;
     }
 
@@ -82,7 +69,7 @@ public class DrawPanel extends JPanel implements Runnable
                             this.tool.setSPoint(this.getMousePosition());
                             this.tool.setCPoint(this.getMousePosition());
                             this.addTemporaryDragElement(this.tool.getLineColor(),this.tool.getFillColor(), this.tool.getSPoint(),
-                                    this.tool.getCPoint(), this.tool.getStrokeStyle());
+                                    this.tool.getCPoint());
                         }
 
                         if (this.getMousePosition() != this.tool.getCPoint())
@@ -92,7 +79,7 @@ public class DrawPanel extends JPanel implements Runnable
                             this.tool.setCPoint(this.getMousePosition());
                             this.elements.remove(this.elements.size() - 1);
                             this.addTemporaryDragElement(this.tool.getLineColor(),this.tool.getFillColor(), this.tool.getSPoint(),
-                                    this.tool.getCPoint(), this.tool.getStrokeStyle());
+                                    this.tool.getCPoint());
                         }
                     }
 
@@ -103,18 +90,18 @@ public class DrawPanel extends JPanel implements Runnable
                         switch (this.currentTool)
                         {
                         case OVAL:
-                            this.elements.add(new Oval(this.tool.getLineColor(),this.tool.getFillColor(),
+                            this.elements.add(new Oval(this.tool.getLineColor(), this.tool.getFillColor(),
                                     this.tool.getSPoint(),
                                     this.tool.getFPoint()));
                             break;
                         case RECTANGLE:
                             this.elements.add(new Rectangle(this.tool.getLineColor(),this.tool.getFillColor(), this.tool
-                                    .getSPoint(), this.tool.getFPoint(), this.tool.getStrokeStyle()));
+                                    .getSPoint(), this.tool.getFPoint()));
                             break;
                         case LINE:
                             this.elements.add(new Line(this.tool.getLineColor(),
-                                     this.tool.getSPoint(),
-                                     this.tool.getFPoint()));
+                                    this.tool.getSPoint(),
+                                    this.tool.getFPoint()));
                         }
                     }
 
@@ -151,7 +138,7 @@ public class DrawPanel extends JPanel implements Runnable
 
     }
 
-    public void addTemporaryDragElement(Color lineClr, Color fillClr, Point sPoint, Point cPoint, StrokeStyleEnum strokeS)
+    public void addTemporaryDragElement(Color lineClr, Color fillClr, Point sPoint, Point cPoint)
     {
         switch (currentTool)
         {
@@ -163,7 +150,7 @@ public class DrawPanel extends JPanel implements Runnable
 
             case RECTANGLE:
             {
-                this.elements.add(new Rectangle(lineClr, fillClr, sPoint, cPoint, strokeS));
+                this.elements.add(new Rectangle(lineClr, fillClr, sPoint, cPoint));
                 break;
             }
             case LINE:
@@ -187,12 +174,12 @@ public class DrawPanel extends JPanel implements Runnable
         tool.setFillColor(clr);
     }
 
-    public void setTool(ToolEnum tool)
+    public void setTool(FigureEnum tool)
     {
         this.currentTool = tool;
     }
 
-    public ToolEnum getTool()
+    public FigureEnum getTool()
     {
         return this.currentTool;
     }
@@ -205,27 +192,27 @@ public class DrawPanel extends JPanel implements Runnable
 
         public void mousePressed(MouseEvent event)
         {
-            if (DrawPanel.this.animator == null)
+            if (DrawingPanel.this.animator == null)
             {
-                DrawPanel.this.startTheThread();
+                DrawingPanel.this.startTheThread();
             }
 
-            DrawPanel.this.mousePressed = Boolean.valueOf(true);
+            DrawingPanel.this.mousePressed = Boolean.valueOf(true);
         }
 
         public void mouseReleased(MouseEvent event)
         {
-            DrawPanel.this.mousePressed = Boolean.valueOf(false);
+            DrawingPanel.this.mousePressed = Boolean.valueOf(false);
         }
 
         public void mouseClicked(MouseEvent event)
         {
-            DrawPanel.this.mouseClicked = true;
+            DrawingPanel.this.mouseClicked = true;
         }
 
         public void mouseExited(MouseEvent event)
         {
-            DrawPanel.this.mousePressed = Boolean.valueOf(false);
+            DrawingPanel.this.mousePressed = Boolean.valueOf(false);
         }
     }
 }

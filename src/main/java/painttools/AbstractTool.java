@@ -10,12 +10,10 @@ public class AbstractTool implements Serializable
     protected Point cPoint;
     protected StrokeStyleEnum strokeStyle;
     protected boolean isDrawing;
-    protected Color color;
+    protected Color lineColor;
+    protected Color fillColor;
 
-    public AbstractTool(Color clr)
-    {
-        this.color = clr;
-    }
+
 
     public void setPPoint(Point pt)
     {
@@ -37,14 +35,20 @@ public class AbstractTool implements Serializable
         return this.cPoint;
     }
 
-    public Color getColor()
-    {
-        return this.color;
+    public Color getLineColor() {
+        return lineColor;
     }
 
-    public void setColor(Color clr)
-    {
-        this.color = clr;
+    public void setLineColor(Color lineColor) {
+        this.lineColor = lineColor;
+    }
+
+    public Color getFillColor() {
+        return fillColor;
+    }
+
+    public void setFillColor(Color fillColor) {
+        this.fillColor = fillColor;
     }
 
     public StrokeStyleEnum getStrokeStyle()

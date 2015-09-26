@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package paintcontrols;
 
 import java.awt.BorderLayout;
@@ -14,19 +9,22 @@ import javax.swing.JPanel;
 
 import painttools.ToolEnum;
 
-public class PaintToolPanel extends JPanel {
+public class ConfigPanel extends JPanel
+{
     protected ToolButton[] buttons;
     public ToolOptionPanel toolOptionPanel;
 
-    public PaintToolPanel(ToolOptionPanel toolOptionPanel) {
+    public ConfigPanel(ToolOptionPanel toolOptionPanel)
+    {
         this.setBackground(Color.darkGray);
         this.setPreferredSize(new Dimension(192, 0));
-        this.setLayout(new BorderLayout(8, 8));
+        this.setLayout(new BorderLayout(1, 2));
         this.toolOptionPanel = toolOptionPanel;
         this.add(toolOptionPanel, "South");
     }
 
-    public void setToolOptionPanel(ToolOptionPanel panel) {
+    public void setToolOptionPanel(ToolOptionPanel panel)
+    {
         this.remove(this.toolOptionPanel);
         this.toolOptionPanel = panel;
         this.add(this.toolOptionPanel, "South");

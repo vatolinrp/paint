@@ -15,13 +15,12 @@ import javax.swing.JPanel;
 import paintapplication.Main;
 import painttools.StrokeStyleEnum;
 import painttools.ToolEnum;
-import paintvisuals.ToolOptionIcon;
 
-public class RectShapeToolPanel extends ToolOptionPanel {
+public class FillOption extends ToolOptionPanel {
     JButton fillButton;
     JButton unFillButton;
 
-    public RectShapeToolPanel(ToolEnum tool) {
+    public FillOption(ToolEnum tool) {
         super(tool);
         JPanel fillButtonPanel = new JPanel();
         fillButtonPanel.setLayout(new GridLayout(1, 2));
@@ -29,21 +28,9 @@ public class RectShapeToolPanel extends ToolOptionPanel {
         fillButtonPanel.setPreferredSize(new Dimension(150, 50));
         this.fillButton = new JButton();
         this.unFillButton = new JButton();
-        RectShapeToolPanel.ButtonListener listener = new RectShapeToolPanel.ButtonListener();
+        FillOption.ButtonListener listener = new FillOption.ButtonListener();
         this.fillButton.addActionListener(listener);
         this.unFillButton.addActionListener(listener);
-        if(tool == ToolEnum.RECTANGLE) {
-            this.fillButton.add(new ToolOptionIcon(StrokeStyleEnum.FILL_RECT));
-            this.unFillButton.add(new ToolOptionIcon(StrokeStyleEnum.OPEN_RECT));
-        }
-
-        if(tool == ToolEnum.OVAL) {
-            this.fillButton.add(new ToolOptionIcon(StrokeStyleEnum.FILL_OVAL));
-            this.unFillButton.add(new ToolOptionIcon(StrokeStyleEnum.OPEN_OVAL));
-        }
-
-
-
         fillButtonPanel.add(this.fillButton);
         fillButtonPanel.add(this.unFillButton);
         this.add(fillButtonPanel);
@@ -56,8 +43,8 @@ public class RectShapeToolPanel extends ToolOptionPanel {
         }
 
         public void actionPerformed(ActionEvent event) {
-            if(event.getSource() == RectShapeToolPanel.this.fillButton) {
-                switch(RectShapeToolPanel.this.tool) {
+            if(event.getSource() == FillOption.this.fillButton) {
+                switch(FillOption.this.tool) {
                     case RECTANGLE:
                         Main.paint.drawPanel.tool.setStrokeStyle(StrokeStyleEnum.FILL_RECT);
                         break;
@@ -66,8 +53,8 @@ public class RectShapeToolPanel extends ToolOptionPanel {
                 }
             }
 
-            if(event.getSource() == RectShapeToolPanel.this.unFillButton) {
-                switch(RectShapeToolPanel.this.tool) {
+            if(event.getSource() == FillOption.this.unFillButton) {
+                switch(FillOption.this.tool) {
                     case RECTANGLE:
                         Main.paint.drawPanel.tool.setStrokeStyle(StrokeStyleEnum.OPEN_RECT);
                         break;
@@ -76,7 +63,7 @@ public class RectShapeToolPanel extends ToolOptionPanel {
                 }
             }
 
-            RectShapeToolPanel.this.repaint();
+            FillOption.this.repaint();
         }
     }
 }

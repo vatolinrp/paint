@@ -16,7 +16,7 @@ public class Menu extends JMenuBar
     JMenuItem drawEllipse;
     JMenuItem drawLine;
 
-    Menu()
+    public Menu()
     {
         Menu.ItemHandler itemHandler = new Menu.ItemHandler();
 
@@ -50,24 +50,28 @@ public class Menu extends JMenuBar
     {
         public void actionPerformed(ActionEvent event)
         {
+            if( event.getSource() == Menu.this.newSketch)
+            {
+                Main.invalidate();
+            }
             if (event.getSource() == Menu.this.quit)
             {
-                Main.paint.dispose();
+                Main.getPaintFrame().dispose();
                 System.exit(0);
             }
             if (event.getSource() == Menu.this.drawRectangle)
             {
-                Main.paint.drawingPanel.setTool(FigureEnum.RECTANGLE);
+                Main.getPaintFrame().getDrawingPanel().setTool(FigureEnum.RECTANGLE);
             }
             if (event.getSource() == Menu.this.drawEllipse)
             {
-                Main.paint.drawingPanel.setTool(FigureEnum.OVAL);
+                Main.getPaintFrame().getDrawingPanel().setTool(FigureEnum.OVAL);
             }
             if (event.getSource() == Menu.this.drawLine)
             {
-                Main.paint.drawingPanel.setTool(FigureEnum.LINE);
+                Main.getPaintFrame().getDrawingPanel().setTool(FigureEnum.LINE);
             }
-            Main.paint.repaint();
+            Main.getPaintFrame().repaint();
             Menu.this.setFocusable(false);
         }
     }

@@ -5,6 +5,12 @@
 
 package paintapplication;
 
+import paintapplication.shapes.Figure;
+import paintapplication.shapes.Line;
+import paintapplication.shapes.Oval;
+import paintapplication.shapes.Rectangle;
+import paintapplication.tools.DrawingTool;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -16,8 +22,8 @@ import javax.swing.JPanel;
 
 public class DrawingPanel extends JPanel implements Runnable
 {
-    public int frameCount;
-    public ArrayList elements;
+    private int frameCount;
+    private ArrayList elements;
     protected Boolean mousePressed;
     protected boolean mouseClicked;
     public FigureEnum currentTool;
@@ -61,7 +67,7 @@ public class DrawingPanel extends JPanel implements Runnable
                         this.mousePressed = Boolean.valueOf(false);
                     }
 
-                    if (this.mousePressed.booleanValue())
+                    if (this.mousePressed)
                     {
                         if (!this.tool.isDrawing())
                         {
@@ -83,7 +89,7 @@ public class DrawingPanel extends JPanel implements Runnable
                         }
                     }
 
-                    if (this.tool.isDrawing() && !this.mousePressed.booleanValue())
+                    if (this.tool.isDrawing() && !mousePressed)
                     {
                         this.tool.setDrawing(false);
                         this.elements.remove(this.elements.size() - 1);
@@ -202,7 +208,7 @@ public class DrawingPanel extends JPanel implements Runnable
 
         public void mouseReleased(MouseEvent event)
         {
-            DrawingPanel.this.mousePressed = Boolean.valueOf(false);
+            DrawingPanel.this.mousePressed = false;
         }
 
         public void mouseClicked(MouseEvent event)
@@ -212,7 +218,7 @@ public class DrawingPanel extends JPanel implements Runnable
 
         public void mouseExited(MouseEvent event)
         {
-            DrawingPanel.this.mousePressed = Boolean.valueOf(false);
+            DrawingPanel.this.mousePressed = false;
         }
     }
 }

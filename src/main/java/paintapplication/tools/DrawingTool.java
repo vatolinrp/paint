@@ -1,4 +1,6 @@
-package paintapplication;
+package paintapplication.tools;
+
+import paintapplication.shapes.Figure;
 
 import java.awt.Color;
 import java.awt.Point;

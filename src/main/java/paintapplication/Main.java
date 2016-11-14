@@ -2,14 +2,19 @@ package paintapplication;
 
 public class Main
 {
-    public static PaintFrame paint;
+  private static PaintFrame paintFrame;
 
-    public Main()
-    {
-    }
+  public static void main( String[] args )
+  {
+    paintFrame = new PaintFrame();
+  }
 
-    public static void main(String[] args)
-    {
-        paint = new PaintFrame();
-    }
+  public static PaintFrame getPaintFrame() {
+    return paintFrame;
+  }
+
+  public static void invalidate() {
+    paintFrame.dispose();
+    paintFrame = new PaintFrame();
+  }
 }

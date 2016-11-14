@@ -37,13 +37,13 @@ public class ColorBox extends JPanel
         {
             if(event.getButton() == MouseEvent.BUTTON1)
             {
-                Main.paint.drawingPanel.setLineColor(ColorBox.this.color);
+                Main.getPaintFrame().getDrawingPanel().setLineColor(ColorBox.this.color);
             }
             if(event.getButton() == MouseEvent.BUTTON3)
             {
-                Main.paint.drawingPanel.setFillColor(ColorBox.this.color);
+                Main.getPaintFrame().getDrawingPanel().setFillColor(ColorBox.this.color);
             }
-            Main.paint.repaint();
+            Main.getPaintFrame().repaint();
         }
 
         public void mouseReleased(MouseEvent event)

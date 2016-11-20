@@ -8,7 +8,7 @@ public abstract class Figure
 {
   protected Color lineColor;
 
-  protected BasicStroke lineStroke = new BasicStroke( (float) 5 );
+  protected BasicStroke lineStroke = new BasicStroke( (float)5 );
 
   public abstract void draw( Graphics graphics );
 }

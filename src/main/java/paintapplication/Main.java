@@ -9,11 +9,13 @@ public class Main
     paintFrame = new PaintFrame();
   }
 
-  public static PaintFrame getPaintFrame() {
+  public static PaintFrame getPaintFrame()
+  {
     return paintFrame;
   }
 
-  public static void invalidate() {
+  public static void invalidate()
+  {
     paintFrame.dispose();
     paintFrame = new PaintFrame();
   }

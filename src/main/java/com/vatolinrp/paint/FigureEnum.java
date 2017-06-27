@@ -1,4 +1,4 @@
-package com.vatolinrp.paintapplication;
+package com.vatolinrp.paint;
 
 public enum FigureEnum
 {

@@ -1,4 +1,4 @@
-package com.vatolinrp.paintapplication.shapes;
+package com.vatolinrp.paint.shapes;
 
 import java.awt.Color;
 

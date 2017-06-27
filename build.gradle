@@ -1,0 +1,11 @@
+group 'com.vatolinrp'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.5'
+    distributionType Wrapper.DistributionType.ALL
+}

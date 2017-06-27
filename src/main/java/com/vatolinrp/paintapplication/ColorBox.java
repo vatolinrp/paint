@@ -1,4 +1,4 @@
-package paintapplication;
+package com.vatolinrp.paintapplication;
 
 import java.awt.Color;
 import java.awt.Dimension;

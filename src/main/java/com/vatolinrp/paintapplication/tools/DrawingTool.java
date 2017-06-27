@@ -1,6 +1,6 @@
-package paintapplication.tools;
+package com.vatolinrp.paintapplication.tools;
 
-import paintapplication.shapes.Figure;
+import com.vatolinrp.paintapplication.shapes.Figure;
 
 import java.awt.Color;
 import java.awt.Point;

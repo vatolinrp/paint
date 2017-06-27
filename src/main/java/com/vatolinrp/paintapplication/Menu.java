@@ -1,4 +1,4 @@
-package paintapplication;
+package com.vatolinrp.paintapplication;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

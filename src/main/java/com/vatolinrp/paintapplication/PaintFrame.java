@@ -1,4 +1,4 @@
-package paintapplication;
+package com.vatolinrp.paintapplication;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

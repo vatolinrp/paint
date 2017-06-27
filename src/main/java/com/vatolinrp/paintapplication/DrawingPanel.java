@@ -1,10 +1,10 @@
-package paintapplication;
+package com.vatolinrp.paintapplication;
 
-import paintapplication.shapes.Figure;
-import paintapplication.shapes.Line;
-import paintapplication.shapes.Oval;
-import paintapplication.shapes.Rectangle;
-import paintapplication.tools.DrawingTool;
+import com.vatolinrp.paintapplication.shapes.Figure;
+import com.vatolinrp.paintapplication.shapes.Line;
+import com.vatolinrp.paintapplication.shapes.Oval;
+import com.vatolinrp.paintapplication.shapes.Rectangle;
+import com.vatolinrp.paintapplication.tools.DrawingTool;
 
 import java.awt.Color;
 import java.awt.Dimension;

@@ -1,4 +1,4 @@
-package paintapplication;
+package com.vatolinrp.paintapplication;
 
 public class Main
 {
